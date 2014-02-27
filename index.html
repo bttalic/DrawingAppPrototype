@@ -1,0 +1,50 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+
+	<link rel="stylesheet" href='./main.css'></link>
+	<script src='./jquery.js'></script>
+	<script src="./prototype.js"></script>
+	<script src="./ui.js"></script>
+	<script src="./helper.js"></script>
+	
+	<script src="./objects/pen.js"></script>
+	<script src="./objects/text.js"></script>
+	<script src="./objects/line.js"></script>
+	<script src="./objects/backgroundImage.js"></script>
+	<script src="./objects/draw.js"></script>
+
+	<script type="text/javascript" src="jscolor/jscolor.js"></script>
+	<script src="./main.js"></script>
+
+</head>
+
+<body>
+	<canvas id="myCanvas"></canvas>
+	<div id='controls'>
+	
+		<div class='menu' id='linesMenu'>
+		<button id='lines'>Lines</button>
+			<ul>
+				<li><button id='straightLine'> Straight Line </button></li>
+				<li><button id='curvyLine'> Curvy Line </button></li>
+			</ul>
+		</div>
+
+		<div class='menu' id='penMenu'>
+		<input id='penSize' class='penPicker' value='5' />
+		<input id='penColor' class="color penPicker" value='66ff00' />
+		<button id='clear'> Clear </button>
+		<button id='select'> Select </button>
+				<button id='undo'> Undo </button>
+		<button id='redo'> Redo </button>
+				<button id='addText'> Add Text </button>
+		<button id='toImage'> Save PNG </button>
+		<button id='loadImage'> Load Image </button>
+
+	</div>
+
+	<img id='bckImg'  src='http://concord.org/concord-consortium.png' />
+</body>
+</html>
