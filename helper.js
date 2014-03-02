@@ -13,7 +13,6 @@ function debugOutput( draw ) {
 function onLine( point1, point2, mousePosition ){
 	dxc = mousePosition.x - point1.x;
 	dyc = mousePosition.y - point1.y;
-	console.log(JSON.stringify(point1)+" "+JSON.stringify(point2)+" "+JSON.stringify(mousePosition));
 	dxl = point2.x - point1.x;
 	dyl = point2.y - point1.y;
 	var cross = cross = dxc * dyl - dyc * dxl;
@@ -29,4 +28,33 @@ function onLine( point1, point2, mousePosition ){
 		point2.y <= mousePosition.y && mousePosition.y <= point1.y;
 	}
 	return false;
+}
+
+function addButton( id, value ) {
+	$subControls = $('#sub-controls');
+	var button = "<button id='"+id+"'>"+value+"</button>";
+	$subControls.append(button);
+}
+
+function addInput( id, value ){
+	$subControls = $('#sub-controls');
+	var input = "<input id='"+id+"' value='"+value+"'/>";
+	$subControls.append(input);
+}
+
+function addSelect( id, options ){
+	$subControls = $('#sub-controls');
+	var select = "<select id='"+id+"'>";
+	for(var i = 0; i<options.length; i++){
+		select += "<option value='"+options[i].value+"'>"+options[i].text+"</option>";
+	}
+	$subControls.append(select);
+}
+
+function clearSubControls() {
+	$('#sub-controls').children().each(function(){
+		if(this.id != 'penSize' && this.id != 'penColor') {
+			$(this).remove();
+		}
+	});
 }

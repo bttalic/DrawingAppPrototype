@@ -2,8 +2,11 @@
 $(document).ready(function(){
 	//draw();
 	$canvas = $('#tutoria');
-	var canvas = document.getElementById('myCanvas')
+	var canvas = document.getElementById('myCanvas');
+	canvas.width = 600;
+	canvas.height = 300;
 	var context = canvas.getContext('2d');
+
 
 	var draw = new Draw( context, canvas );
 
@@ -15,6 +18,7 @@ $(document).ready(function(){
 
 	$('#myCanvas').mousedown(function(e){	
 		mouseDown = true;
+		
 		if( draw.getDrawingType() == -1 ){
 			draw.selection ( getMouseCoordinates('myCanvas', e) );
 		} else { 
@@ -41,7 +45,7 @@ $(document).ready(function(){
 	})
 
 	$('#myCanvas').mousemove(function(e){
-
+		
 		if( mouseDown == true && draw.getSelectedIndex() > -1){
 			var mousePosition = getMouseCoordinates('myCanvas', e);
 			var delta = {x: mousePosition.x - draw.selectionPosition.x ,

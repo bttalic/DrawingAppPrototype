@@ -1,13 +1,14 @@
-function Text( textString, positionX, positionY, fontSize, fontWeight, fontFamily ) {
+function Text( textString, positionX, positionY, fontSize, fontWeight, fontFamily, color ) {
 
 		var textString = textString;
 		var fontSize = fontSize;
 		var fontFamily = fontFamily;
 		var fontWeight = fontWeight;
-		var contextFont = fontWeight + " " + fontSize + " " + fontFamily;
+		var contextFont = fontWeight + " " + fontSize + "px " + fontFamily;
 		var position = { x: positionX, y: positionY };
 		var borderPosition = { x: position.x + textString.width(), y: position.y - textString.height() };
 		var selected = false;
+		var color = color;
 		this.pen = new Pen();
 
 		this.select = function ( mousePosition ) {
@@ -25,7 +26,7 @@ function Text( textString, positionX, positionY, fontSize, fontWeight, fontFamil
 	}
 
 	this.draw = function( context, canvas ) {
-		context.fillStyle = "blue";
+		context.fillStyle = color;
 		context.font = contextFont;
 		context.fillText(textString, position.x, position.y);
 	}

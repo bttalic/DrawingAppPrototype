@@ -12,7 +12,6 @@ function Line( startPosition, type, pen ) {
 		var selected = false;
 
 		this.addPoint = function ( point ) {
-
 			//straight line
 			if(lineType == 0){
 				points[1] = point;
@@ -58,6 +57,7 @@ function Line( startPosition, type, pen ) {
 			}
 		}
 
+
 		this.draw = function( context, canvas ) {
 			context.beginPath();
 			context.lineJoin = pen.lineJoin();
@@ -69,9 +69,9 @@ function Line( startPosition, type, pen ) {
 
 			context.moveTo(points[0].x, points[0].y);
 			for(var i = 1; i<points.length; i++){
-				context.lineTo(points[i].x, points[i].y);
-				context.stroke();
+				context.lineTo(points[i].x, points[i].y);	
 			}
+			context.stroke();
 			context.closePath();
 		}
 

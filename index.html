@@ -21,30 +21,29 @@
 </head>
 
 <body>
-	<canvas id="myCanvas"></canvas>
-	<div id='controls'>
-	
-		<div class='menu' id='linesMenu'>
-		<button id='lines'>Lines</button>
-			<ul>
-				<li><button id='straightLine'> Straight Line </button></li>
-				<li><button id='curvyLine'> Curvy Line </button></li>
-			</ul>
+	<div id='drawingApp'>
+		<section id='main-controls'>
+			<button id='linesControl'>Lines</button>
+			<button id='addTextControl'> Add Text </button>
+			<button id='loadImage'> Load Image </button>
+			<button id='select'> Select </button>
+
+			<button id='undo'> Undo </button>
+			<button id='redo'> Redo </button>
+			<button id='clear'> Clear </button>
+			<button id='toImage'> Save PNG </button>
+		</section>
+
+		<div class='container'>
+			<canvas id="myCanvas"></canvas>
+
+			<section id='sub-controls'>
+				<input id='penSize' class='penPicker' value='5' />
+				<input id='penColor' class="color penPicker" value='66ff00' />
+			</section>
 		</div>
 
-		<div class='menu' id='penMenu'>
-		<input id='penSize' class='penPicker' value='5' />
-		<input id='penColor' class="color penPicker" value='66ff00' />
-		<button id='clear'> Clear </button>
-		<button id='select'> Select </button>
-				<button id='undo'> Undo </button>
-		<button id='redo'> Redo </button>
-				<button id='addText'> Add Text </button>
-		<button id='toImage'> Save PNG </button>
-		<button id='loadImage'> Load Image </button>
-
 	</div>
-
 	<img id='bckImg'  src='http://concord.org/concord-consortium.png' />
 </body>
 </html>

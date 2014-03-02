@@ -19,8 +19,12 @@
 			drawingType = type;
 		}
 
+		this.getContext = function () {
+			return context;
+		}
+
 		this.clearCanvas = function() {
-			context.clearRect ( 0 , 0 , 300 , 150 );
+			context.clearRect ( 0 , 0 ,	canvas.width , canvas.height );
 			this.steps.clear();
 			this.currentIndex = -1;
 		}
@@ -76,7 +80,6 @@
 		}
 
 		this.setBackground = function (img) {
-			console.log(JSON.stringify(this.steps));
 			this.steps.splice(0, 0, img);
 			this.currentIndex++;
 			if(selectedIndex > -1)
@@ -86,7 +89,7 @@
 		}
 
 		this.reDraw = function(){
-			context.clearRect ( 0 , 0 , 300 , 150 );
+			context.clearRect ( 0 , 0 ,	canvas.width , canvas.height );
 			for(var i = 0; i<this.steps.length; i++){
 				this.steps[i].draw(context, canvas);
 			}
