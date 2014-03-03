@@ -4,7 +4,8 @@
 <head>
 
 	<link rel="stylesheet" href='./main.css'></link>
-	<script src='./jquery.js'></script>
+	<script src='./includes/jquery.js'></script>
+	<script src='./includes/finger.js'></script>
 	<script src="./prototype.js"></script>
 	<script src="./ui.js"></script>
 	<script src="./helper.js"></script>
@@ -17,21 +18,29 @@
 
 	<script type="text/javascript" src="jscolor/jscolor.js"></script>
 	<script src="./main.js"></script>
+	<meta name="viewport" 
+	content="width=device-width, initial-scale=1.0, user-scalable=no">
+	<meta name="viewport" 
+	content="height=device-height, initial-scale=1.0, user-scalable=no">
 
 </head>
 
 <body>
 	<div id='drawingApp'>
-		<section id='main-controls'>
-			<button id='linesControl'>Lines</button>
-			<button id='addTextControl'> Add Text </button>
-			<button id='loadImage'> Load Image </button>
-			<button id='select'> Select </button>
+		<section id='drag-container' style='border: 1px solid black'>
+			Flick\Click to see controls
+		</section>
+		<section  id='main-controls' class='hidden-element' >
+			<button id='linesControl'> <img src='./icons/line.png' /> </button>
+			<button id='addTextControl'> <img src='./icons/text.png' /> </button>
+			<button id='loadImage'> <img src='./icons/image.png' /> </button>
+			<button id='select'> <img src='./icons/select.png' /> </button>
 
-			<button id='undo'> Undo </button>
-			<button id='redo'> Redo </button>
-			<button id='clear'> Clear </button>
-			<button id='toImage'> Save PNG </button>
+			<button id='undo'> <img src='./icons/undo.png' /> </button>
+			<button id='redo'> <img src='./icons/redo.png' /> </button>
+			<button id='clear'> <img src='./icons/clear.png' /> </button>
+			<button id='toImage'> <img src='./icons/image.png' /> </button>
+			Flick \ Click to hide
 		</section>
 
 		<div class='container'>
@@ -44,6 +53,6 @@
 		</div>
 
 	</div>
-	<img id='bckImg'  src='http://concord.org/concord-consortium.png' />
+	<img id='bckImg'  src='http://concord.org/concord-consortium.png' style='display:none'/>
 </body>
 </html>

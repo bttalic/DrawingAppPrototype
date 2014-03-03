@@ -1,10 +1,8 @@
 
 $(document).ready(function(){
-	//draw();
-	$canvas = $('#tutoria');
+
 	var canvas = document.getElementById('myCanvas');
-	canvas.width = 600;
-	canvas.height = 300;
+	
 	var context = canvas.getContext('2d');
 
 
@@ -16,7 +14,39 @@ $(document).ready(function(){
 	
 	var mouseDown = false;
 
+
 	$('#myCanvas').mousedown(function(e){	
+		onMouseDown(e);
+	});
+
+	$('#myCanvas').mousemove(function(e){
+		onMouseMove(e);
+	});
+
+	$('#myCanvas').mouseup(function(e){
+		onMouseUp(e);
+	});
+
+
+
+	canvas.addEventListener('touchstart', function(e){
+		e.preventDefault();
+		onMouseDown(e);
+		
+	});
+
+	canvas.addEventListener('touchmove', function(e){
+		e.preventDefault();
+		onMouseMove(e);
+	});
+
+	canvas.addEventListener('touchend', function(e){
+		e.preventDefault();
+		onMouseUp(e);
+	});
+
+
+	function onMouseDown(e) {
 		mouseDown = true;
 		
 		if( draw.getDrawingType() == -1 ){
@@ -31,21 +61,9 @@ $(document).ready(function(){
 			draw.currentIndex++;
 			draw.steps[draw.currentIndex].pen.setPen(true);      
 		}	
-	});
+	}
 
-	$('#myCanvas').mouseup(function(e){
-		mouseDown = false;
-		if(!draw.steps[draw.currentIndex])
-			return
-		if( draw.steps[draw.currentIndex].pen.getPen()  == false)
-			return;
-		draw.steps[draw.currentIndex].pen.setPen(false);    
-		draw.steps[draw.currentIndex].addPoint(getMouseCoordinates('myCanvas', e));
-		draw.reDraw();
-	})
-
-	$('#myCanvas').mousemove(function(e){
-		
+	function onMouseMove(e){
 		if( mouseDown == true && draw.getSelectedIndex() > -1){
 			var mousePosition = getMouseCoordinates('myCanvas', e);
 			var delta = {x: mousePosition.x - draw.selectionPosition.x ,
@@ -61,7 +79,20 @@ $(document).ready(function(){
 				return;
 			draw.steps[draw.currentIndex].addPoint(getMouseCoordinates('myCanvas', e));
 			draw.reDraw();
-		});
+		}
 
-});
+		function onMouseUp(e) {
+			mouseDown = false;
+			if(!draw.steps[draw.currentIndex])
+				return
+			if( draw.steps[draw.currentIndex].pen.getPen()  == false)
+				return;
+			draw.steps[draw.currentIndex].pen.setPen(false);    
+			//draw.steps[draw.currentIndex].addPoint(getMouseCoordinates('myCanvas', e));
+			draw.reDraw();
+		}
+
+
+
+	});
 

@@ -5,7 +5,7 @@
 		var selectedIndex = -1;
 		var context = context;
 		var canvas = canvas;
-		var drawingType = 0;
+		var drawingType = -1;
 		this.selectionPosition = null;
 
 
@@ -34,14 +34,12 @@
 		}
 
 		this.selection = function ( mousePosition ) {
-			console.log("SI: "+selectedIndex);
 			if(selectedIndex > -1 ){
 				this.steps[selectedIndex].selected = false;
 				selectedIndex = -1;
 				this.reDraw();
 			}
 			for(var i = 0; i<this.steps.length; i++){
-				console.log("Is selected: "+this.steps[i].select( mousePosition ));
 				if( this.steps[i].select( mousePosition ) == true){
 					this.reDraw();
 					selectedIndex = i;
@@ -85,7 +83,6 @@
 			if(selectedIndex > -1)
 				selectedIndex = -1;
 			this.reDraw();
-			console.log(JSON.stringify(this.steps));
 		}
 
 		this.reDraw = function(){

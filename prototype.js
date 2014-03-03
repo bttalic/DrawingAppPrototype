@@ -23,7 +23,7 @@ function loadPrototypes() {
 		.appendTo($('body')),
 		h = o.height();
 
-		//o.remove();
+		o.remove();
 
 		return h;
 	}

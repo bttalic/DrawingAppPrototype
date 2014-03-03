@@ -6,7 +6,8 @@ function Text( textString, positionX, positionY, fontSize, fontWeight, fontFamil
 		var fontWeight = fontWeight;
 		var contextFont = fontWeight + " " + fontSize + "px " + fontFamily;
 		var position = { x: positionX, y: positionY };
-		var borderPosition = { x: position.x + textString.width(), y: position.y - textString.height() };
+		var borderPosition = { x: position.x + textString.width(contextFont),
+								 y: position.y - textString.height(contextFont) };
 		var selected = false;
 		var color = color;
 		this.pen = new Pen();
@@ -21,8 +22,8 @@ function Text( textString, positionX, positionY, fontSize, fontWeight, fontFamil
 	this.move = function ( delta ) {
 		position.x += delta.x;
 		position.y += delta.y;
-		borderPosition.x = position.x + textString.width();
-		borderPosition.y = position.y - textString.height();
+		borderPosition.x = position.x + textString.width(contextFont);
+		borderPosition.y = position.y - textString.height(contextFont);
 	}
 
 	this.draw = function( context, canvas ) {

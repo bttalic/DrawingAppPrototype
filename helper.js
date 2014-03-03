@@ -1,13 +1,12 @@
 function getMouseCoordinates( canvasId, e ){
-	var rect = document.getElementById(canvasId).getBoundingClientRect();
-	var mouseX = e.clientX - rect.left;
-	var mouseY = e.clientY - rect.top;
-	return {x: mouseX, y: mouseY};
-}
+	
+	var inputPositionX = typeof e.clientX == 'undefined' ? e.touches[0].pageX : e.clientX;
+	var inputPositionY = typeof e.clientY == 'undefined' ? e.touches[0].pageY : e.clientY;
 
-function debugOutput( draw ) {
-	console.log(draw.pen.toString());
-	console.log(draw.getDrawingType());
+	var rect = document.getElementById(canvasId).getBoundingClientRect();
+	var mouseX = inputPositionX - rect.left;
+	var mouseY = inputPositionY - rect.top;
+	return {x: mouseX, y: mouseY};
 }
 
 function onLine( point1, point2, mousePosition ){
@@ -16,7 +15,7 @@ function onLine( point1, point2, mousePosition ){
 	dxl = point2.x - point1.x;
 	dyl = point2.y - point1.y;
 	var cross = cross = dxc * dyl - dyc * dxl;
-	console.log("Cross: "+cross);
+
 	if( cross >-100 && cross < 100) {
 		if (Math.abs(dxl) >= Math.abs(dyl))
 			return dxl > 0 ? 
@@ -30,10 +29,18 @@ function onLine( point1, point2, mousePosition ){
 	return false;
 }
 
-function addButton( id, value ) {
+function addButton( id, src ) {
 	$subControls = $('#sub-controls');
-	var button = "<button id='"+id+"'>"+value+"</button>";
+	var button = "<button id='"+id+"'> <img src='./icons/"+src+".png' /> </button>";
 	$subControls.append(button);
+
+	$('#sub-controls button').click(function(){
+		$('#sub-controls').children().each(function(){
+			$(this).removeClass('selectedButton');
+		})
+		$(this).addClass('selectedButton');
+	});
+
 }
 
 function addInput( id, value ){
